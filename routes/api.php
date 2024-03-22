@@ -2,11 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GuruApiController;
 use App\Http\Controllers\ApiAuthController;
 use App\Http\Controllers\Api\JurusanApiController;
 use App\Http\Controllers\Api\TingkatApiController;
 use App\Http\Controllers\Api\KelasApiController;
+use App\Http\Controllers\Api\GuruApiController;
+use App\Http\Controllers\Api\SiswaApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/jurusanapi', [JurusanApiController::class, 'index']);
     Route::get('/tingkatapi', [TingkatApiController::class, 'index']);
     Route::get('/kelasapi', [KelasApiController::class, 'index']);
+    Route::get('/guruapi', [GuruApiController::class, 'index']);
+    Route::get('/siswaapi', [SiswaApiController::class, 'index']);
 });

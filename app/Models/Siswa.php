@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Guru extends Model
+class Siswa extends Model
 {
-    protected $fillable = ['nip', 'nama', 'jabatan', 'kelas_id', 'nomor_hp'];
+    protected $fillable = ['nis', 'nama', 'jenis_kelamin', 'kelas_id', 'alamat'];
 
     public function kelas()
     {
