@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\SiswaApiController;
 use App\Http\Controllers\Api\WaliMuridApiController;
 use App\Http\Controllers\Api\JenisPelanggaranApiController;
 use App\Http\Controllers\Api\PelanggaranApiController;
+use App\Http\Controllers\Api\DashboardApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +41,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/pelanggaranapi/search', [PelanggaranApiController::class, 'search']);
     Route::post('/pelanggaranapi/add', [PelanggaranApiController::class, 'add']);
     Route::post('/logout', [ApiAuthController::class, 'logout']);
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/totalsiswa', [DashboardApiController::class, 'totalStudents']);
+        Route::get('/totalpelanggaran', [DashboardApiController::class, 'totalViolations']);
+        Route::get('/pelanggaranbyday', [DashboardApiController::class, 'violationsByDay']);
+        Route::get('/pelanggaranbykategori', [DashboardApiController::class, 'violationsByCategory']);
+        Route::get('/pelanggaranharikategori', [DashboardApiController::class, 'todaysViolationsByCategory']);
+        Route::get('/pelanggaranbykelas', [DashboardApiController::class, 'violationsPerClass']);
+    });
 });
