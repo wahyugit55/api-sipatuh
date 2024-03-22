@@ -32,7 +32,7 @@ class DashboardApiController extends Controller
     {
         $data = Pelanggaran::join('jenis_pelanggarans', 'pelanggarans.jenis_id', '=', 'jenis_pelanggarans.id')
                            ->select('jenis_pelanggarans.nama as category', DB::raw('count(*) as violations'))
-                           ->groupBy('jenis_id')
+                           ->groupBy('jenis_pelanggarans.nama', 'jenis_id') // Perubahan di sini
                            ->get();
         return response()->json(['category_data' => $data]);
     }
@@ -42,7 +42,7 @@ class DashboardApiController extends Controller
         $data = Pelanggaran::join('jenis_pelanggarans', 'pelanggarans.jenis_id', '=', 'jenis_pelanggarans.id')
                            ->select('jenis_pelanggarans.nama as category', DB::raw('count(*) as violations'))
                            ->whereDate('pelanggarans.tanggal', now())
-                           ->groupBy('jenis_id')
+                           ->groupBy('jenis_pelanggarans.nama', 'jenis_id')
                            ->get();
         return response()->json(['today_category_data' => $data]);
     }
@@ -51,7 +51,7 @@ class DashboardApiController extends Controller
     {
         $data = Pelanggaran::join('kelas', 'pelanggarans.siswa_kelas_id', '=', 'kelas.id')
                            ->select('kelas.nama as class', DB::raw('count(*) as violations'))
-                           ->groupBy('siswa_kelas_id')
+                           ->groupBy('kelas.id', 'kelas.nama')
                            ->get();
         return response()->json(['violations_per_class' => $data]);
     }

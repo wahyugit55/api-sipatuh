@@ -14,4 +14,10 @@ class JenisPelanggaran extends Model
         'poin',
         'sanksi',
     ];
+
+    // Definisikan relasi ke model Pelanggaran
+    public function pelanggarans()
+    {
+        return $this->hasMany(Pelanggaran::class, 'jenis_id');
+    }
 }

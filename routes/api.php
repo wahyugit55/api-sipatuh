@@ -33,7 +33,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/jurusanapi', [JurusanApiController::class, 'index']);
     Route::get('/tingkatapi', [TingkatApiController::class, 'index']);
     Route::get('/kelasapi', [KelasApiController::class, 'index']);
-    Route::get('/guruapi', [GuruApiController::class, 'index']);
     Route::get('/siswaapi', [SiswaApiController::class, 'index']);
     Route::get('/walimuridapi', [WaliMuridApiController::class, 'index']);
     Route::get('/jenispelanggaranapi', [JenisPelanggaranApiController::class, 'index']);
