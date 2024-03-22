@@ -103,3 +103,53 @@
 - **Endpoint:** `/logout`
 - **Description:** Logs out the current user.
 - **Success Response:** Confirmation of logout.
+
+## Dashboard Endpoints
+
+### Get Total Number of Students
+
+- **HTTP Method:** GET
+- **Endpoint:** `/dashboard/totalsiswa`
+- **Description:** Retrieves the total number of students.
+- **Response:** `{"total_students": 100}`
+
+### Get Total Number of Violations
+
+- **HTTP Method:** GET
+- **Endpoint:** `/dashboard/totalpelanggaran`
+- **Description:** Retrieves the total number of violations.
+- **Response:** `{"total_violations": 150}`
+
+### Get Number of Violations by Day
+
+- **HTTP Method:** GET
+- **Endpoint:** `/dashboard/pelanggaranbyday`
+- **Description:** Retrieves the number of violations for the current day.
+- **Response:** `{"violations_today": 5}`
+
+### Get Violations by Category
+
+- **HTTP Method:** GET
+- **Endpoint:** `/dashboard/pelanggaranbykategori`
+- **Description:** Retrieves the number of violations broken down by category.
+- **Response:** `{"category_data": [{"category": "Category 1", "violations": 20}, {"category": "Category 2", "violations": 30}]}`
+
+### Get Today's Violations by Category
+
+- **HTTP Method:** GET
+- **Endpoint:** `/dashboard/pelanggaranharikategori`
+- **Description:** Retrieves today's number of violations broken down by category.
+- **Response:** `{"today_category_data": [{"category": "Category 1", "violations": 5}, {"category": "Category 2", "violations": 15}]}`
+
+### Get Number of Violations per Class
+
+- **HTTP Method:** GET
+- **Endpoint:** `/dashboard/pelanggaranbykelas`
+- **Description:** Retrieves the number of violations per class.
+- **Response:** `{"violations_per_class": [{"class": "Class 1", "violations": 30}, {"class": "Class 2", "violations": 40}]}`
+
+## Notes
+
+- The responses shown are examples of expected JSON output.
+- Replace `dashboard` with the actual path prefix if your API structure requires it.
+- Ensure that the necessary authentication is in place for accessing these endpoints.
