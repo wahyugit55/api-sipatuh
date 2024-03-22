@@ -18,6 +18,15 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+    protected function unauthenticated($request, \Illuminate\Auth\AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['success' => false, 'message' => 'Anda tidak memiliki akses'], 401);
+        }
+
+        return redirect()->guest(route('login'));
+    }
+
     /**
      * Register the exception handling callbacks for the application.
      */

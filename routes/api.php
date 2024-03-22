@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GuruApiController;
+use App\Http\Controllers\ApiAuthController;
+use App\Http\Controllers\Api\JurusanApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/login', [ApiAuthController::class, 'login']);
+
+// Melindungi route dengan middleware 'auth:api'
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/guruapi', [GuruApiController::class, 'store']);
+    Route::get('/guruapi', [GuruApiController::class, 'index']);
+    Route::get('/jurusanapi', [JurusanApiController::class, 'index']);
 });
