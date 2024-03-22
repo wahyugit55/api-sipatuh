@@ -8,6 +8,9 @@ use App\Http\Controllers\Api\TingkatApiController;
 use App\Http\Controllers\Api\KelasApiController;
 use App\Http\Controllers\Api\GuruApiController;
 use App\Http\Controllers\Api\SiswaApiController;
+use App\Http\Controllers\Api\WaliMuridApiController;
+use App\Http\Controllers\Api\JenisPelanggaranApiController;
+use App\Http\Controllers\Api\PelanggaranApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +34,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/kelasapi', [KelasApiController::class, 'index']);
     Route::get('/guruapi', [GuruApiController::class, 'index']);
     Route::get('/siswaapi', [SiswaApiController::class, 'index']);
+    Route::get('/walimuridapi', [WaliMuridApiController::class, 'index']);
+    Route::get('/jenispelanggaranapi', [JenisPelanggaranApiController::class, 'index']);
+    Route::get('/pelanggaranapi', [PelanggaranApiController::class, 'index']);
+    Route::get('/pelanggaranapi/search', [PelanggaranApiController::class, 'search']);
+    Route::post('/pelanggaranapi/add', [PelanggaranApiController::class, 'add']);
+    Route::post('/logout', [ApiAuthController::class, 'logout']);
 });

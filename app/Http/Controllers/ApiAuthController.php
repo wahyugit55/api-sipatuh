@@ -54,4 +54,15 @@ class ApiAuthController extends Controller
             return response()->json(['success' => false, 'message' => 'Error occurred', 'error' => $e->getMessage()], 500);
         }
     }
+
+    public function logout(Request $request)
+    {
+        // Revoke current user's token...
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Successfully logged out'
+        ]);
+    }
 }
