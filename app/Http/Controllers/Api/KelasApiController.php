@@ -3,22 +3,23 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Jurusan;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 
-class JurusanApiController extends Controller
+class KelasApiController extends Controller
 {
     public function index(Request $request)
     {
         try {
             $keyword = $request->query('search');
-            $jurusans = Jurusan::when($keyword, function ($query, $keyword) {
-                return $query->where('nama', 'like', "%" . $keyword . "%");
-            })->get();
+            $kelas = Kelas::with(['tingkat', 'jurusan'])
+                        ->when($keyword, function ($query, $keyword) {
+                            return $query->where('nama', 'like', "%" . $keyword . "%");
+                        })->get();
 
             return response()->json([
                 'success' => true,
-                'data' => $jurusans
+                'data' => $kelas
             ]);
         } catch (\Exception $e) {
             return response()->json([
